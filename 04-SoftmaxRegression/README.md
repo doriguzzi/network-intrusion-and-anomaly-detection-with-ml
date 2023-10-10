@@ -1,5 +1,4 @@
 # Network intrusion detection with Softmax Regression
-# Intrusion Detection with Softmax Regression
 In this laboratory, we will use Softmax Regression to classify the network traffic flows as benign or as one DDoS attack class. The Softmax regression model returns the probability of the input flow of belonging to one of the target classes. We use the argmax operator to decide to which class the flow belongs to (either benign or one DDoS attack classes).
 We will train a Softmax regression model on a dataset of benign traffic and DDoS attack traffic.
 
@@ -13,4 +12,4 @@ The network traffic has been previously pre-processed in a way that packets are 
 
 This folder contains three sample notebooks that show the properties of Logistic and Softmax regression.
 The notebook [LogisticRegressionTwoFeatures.ipynb](./LogisticRegressionTwoFeatures.ipynb) shows the different performance of Logistic and Polynomial Logistic regression on synthetic data with linearly and non-linearly separable data.
-The notebook [LogisticRegression.ipynb](./LogisticRegression.ipynb) implements a network intrusion detection with Softmax Regression using pre-recorded network traffic traces.
+The notebook [LogisticRegression.ipynb](./LogisticRegression.ipynb) implements a binary network traffic classifier, which classifies the traffic flows as benign or malicious. This notebook can be used to take inspiration for the lab on Softmax Regression provided in the file [SoftmaxRegression.ipynb](./SoftmaxRegression.ipynb), where some parts of the code must be completed to build a model that classifies the traffic flows in multiple traffic classes (one benign and various DDoS attack types).
