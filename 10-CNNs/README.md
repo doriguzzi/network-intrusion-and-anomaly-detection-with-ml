@@ -1,0 +1,4 @@
+# Convolutional Neural Networks
+In these notebooks, we will use Convolutional Neural Networks (CNNs) in the context of network intrusion detection. To this aim, each network flow is represented as a 100x20 array, where the rows are the packets of the flow in chronological order, while each column is a packet-level feature. Using this representation of the network traffic, we will compare a CNN model against an MLP model in a [DDoS attack detection task](./CNNvsMLP.ipynb) (binary).  
+
+The [laboratory](./cnn-training-tuning-lab.ipynb) focuses on the implementation and tuning of a CNN model for DDoS attack detection. Your job consists of refining the CNN model and configuring the hyperparameters to tune with *random seach*.
