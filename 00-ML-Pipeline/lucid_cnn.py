@@ -37,7 +37,7 @@ from tensorflow.keras.models import Model, Sequential, load_model, save_model
 from sklearn.metrics import f1_score, accuracy_score, confusion_matrix
 from sklearn.utils import shuffle
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
+from scikeras.wrappers import KerasClassifier
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from lucid_dataset_parser import *
 
@@ -161,7 +161,7 @@ def main(argv):
 
             es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=PATIENCE)
             best_model_filename = OUTPUT_FOLDER + str(time_window) + 't-' + str(max_flow_len) + 'n-' + model_name
-            mc = ModelCheckpoint(best_model_filename + '.h5', monitor='val_accuracy', mode='max', verbose=1, save_best_only=True)
+            mc = ModelCheckpoint(best_model_filename + '.keras', monitor='val_accuracy', mode='max', verbose=1, save_best_only=True)
             # With K-Fold cross-validation, the validation set is only used for early stopping
             rnd_search_cv.fit(X_train, Y_train, epochs=args.epochs, validation_data=(X_val, Y_val), callbacks=[es, mc])
 
@@ -170,10 +170,10 @@ def main(argv):
             best_model = rnd_search_cv.best_estimator_.model
 
             # We overwrite the checkpoint models with the one trained on the whole training set (not only k-1 folds)
-            best_model.save(best_model_filename + '.h5')
+            best_model.save(best_model_filename + '.keras')
 
             # Alternatively, to save time, one could set refit=False and load the best model from the filesystem to test its performance
-            #best_model = load_model(best_model_filename + '.h5')
+            #best_model = load_model(best_model_filename + '.keras')
 
             Y_pred_val = (best_model.predict(X_val) > 0.5)
             Y_true_val = Y_val.reshape((Y_val.shape[0], 1))
@@ -210,7 +210,7 @@ def main(argv):
         if args.model is not None:
             model_list = [args.model]
         else:
-            model_list = glob.glob(args.predict + "/*.h5")
+            model_list = glob.glob(args.predict + "/*.keras")
 
         for model_path in model_list:
             model_filename = model_path.split('/')[-1].strip()
@@ -271,7 +271,7 @@ def main(argv):
         labels = parse_labels(args.dataset_type, args.attack_net, args.victim_net)
 
         # do not forget command sudo ./jetson_clocks.sh on the TX2 board before testing
-        if args.model is not None and args.model.endswith('.h5'):
+        if args.model is not None and args.model.endswith('.keras'):
             model_path = args.model
         else:
             print ("No valid model specified!")
