@@ -63,7 +63,7 @@ def count_packets_in_dataset(X_list):
     packet_counters = []
     for X in X_list:
         TOT = X.sum(axis=2)
-        packet_counters.append(np.count_nonzero(TOT))
+        packet_counters.append(int(np.count_nonzero(TOT)))
 
     return packet_counters
 

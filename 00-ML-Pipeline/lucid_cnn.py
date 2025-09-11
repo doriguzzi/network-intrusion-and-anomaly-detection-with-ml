@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Online testing with a pre-recorded traffic trace
-# python3 lucid_cnn.py --predict_live ./sample-dataset/CIC-DDoS-2019-UDPLag.pcap --model ./output/10t-10n-DOS2019-LUCID.h5 --dataset_type DOS2019
+# python3 lucid_cnn.py --predict_live ./sample-dataset/CIC-DDoS-2019-UDPLag.pcap --model ./output/10t-10n-DOS2019-LUCID.keras --dataset_type DOS2019
 
 import tensorflow as tf
 import numpy as np
