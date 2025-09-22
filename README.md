@@ -29,7 +29,7 @@ And configure the environment with ```tensorflow``` and a few more packages:
 
 ```
 (python39)$ pip install tensorflow==2.20
-(python39)$ pip install scikit-learn h5py pyshark matplotlib jupyter graphviz pandas scikeras
+(python39)$ pip install scikit-learn h5py pyshark matplotlib jupyter graphviz pandas scikeras pydot seaborn
 ```
 
 <!-- On macOS (tested on Apple M1, M2 and M3 CPUs)
