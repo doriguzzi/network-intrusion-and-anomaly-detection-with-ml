@@ -37,3 +37,5 @@ Then, you will plot the feature importance histogram, which shows how the differ
 Finally, you will use the trained RF model to classify unseen traffic samples.
 
 The code of this laboratory is available in the following Jupyter notebook: [FeatureImportance-Lab.ipynb](./FeatureImportance-Lab.ipynb)
+
+The notebook [FeatureImportance-Methods.ipynb](./FeatureImportance-Methods.ipynb) illustrates alternative techniques for evaluating feature importance, including Recursive Feature Elimination (RFE), Feature Reset, Permutation, and Partial Dependence Plots (PDP).
