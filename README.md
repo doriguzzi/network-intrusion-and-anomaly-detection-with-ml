@@ -35,7 +35,7 @@ And configure the environment with ```tensorflow``` and a few more packages:
 <!-- On macOS (tested on Apple M1, M2 and M3 CPUs)
 ```
 (python39)$ conda install -c conda-forge tensorflow=2.7.1 numpy=1.26.4
-(python39)$ conda install -c conda-forge scikit-learn h5py pyshark matplotlib jupyter graphviz
+(python39)$ conda install -c conda-forge scikit-learn h5py pyshark scapy matplotlib jupyter graphviz
 ``` -->
 Pyshark is used in the ```lucid_dataset_parser.py``` script for data pre-processing.
 Pyshark is just Python wrapper for tshark, meaning that ```tshark``` must be also installed. On an Ubuntu-based OS, use the following command:
