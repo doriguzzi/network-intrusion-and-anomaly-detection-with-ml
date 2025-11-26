@@ -155,6 +155,10 @@ def parse_labels(dataset_type=None, attackers=None,victims=None, label=1):
 
     return output_dict
 
+def flag_to_int(value):
+    mapping = {'0':0, 'False': 0, '1': 1, 'True': 1}
+    return mapping.get(value, None)
+
 def parse_packet(pkt):
     pf = packet_features()
     tmp_id = [0,0,0,0,0]
@@ -165,9 +169,9 @@ def parse_packet(pkt):
         #pf.features_list.append(int(hashlib.sha256(str(pkt.highest_layer).encode('utf-8')).hexdigest(),
         #                            16) % 10 ** 8)  # highest layer in the packet
         #pf.features_list.append(int(int(pkt.ip.flags, 16)))  # IP flags
-        pf.features_list.append(int(pkt.ip.flags_df)) # don't fragment
-        pf.features_list.append(int(pkt.ip.flags_mf)) # more fragments
-        pf.features_list.append(int(pkt.ip.flags_rb)) # reserved bit
+        pf.features_list.append(flag_to_int(pkt.ip.flags_df)) # don't fragment
+        pf.features_list.append(flag_to_int(pkt.ip.flags_mf)) # more fragments
+        pf.features_list.append(flag_to_int(pkt.ip.flags_rb)) # reserved bit
         pf.features_list.append(int(pkt.ip.frag_offset)) # 13-bit fragment offset
 
         tmp_id[0] = str(pkt.ip.src)  # int(ipaddress.IPv4Address(pkt.ip.src))
@@ -186,17 +190,15 @@ def parse_packet(pkt):
                 tmp_id[1] = int(pkt.tcp.srcport)
                 tmp_id[3] = int(pkt.tcp.dstport)
                 pf.features_list.append(int(pkt.tcp.len))  # TCP length
-                #pf.features_list.append(int(pkt.tcp.ack))  # TCP ack
-                #pf.features_list.append(int(pkt.tcp.flags, 16))  # TCP flags
-                pf.features_list.append(int(pkt.tcp.flags_ack)) # Acknowledgment
-                pf.features_list.append(int(pkt.tcp.flags_cwr)) # Congestion Window Reduced
-                pf.features_list.append(int(pkt.tcp.flags_ece)) # 
-                pf.features_list.append(int(pkt.tcp.flags_fin))
-                pf.features_list.append(int(pkt.tcp.flags_push))
-                pf.features_list.append(int(pkt.tcp.flags_res))
-                pf.features_list.append(int(pkt.tcp.flags_reset))
-                pf.features_list.append(int(pkt.tcp.flags_syn))
-                pf.features_list.append(int(pkt.tcp.flags_urg))
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_ack)) # Acknowledgment
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_cwr)) # Congestion Window Reduced
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_ece)) # 
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_fin))
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_push))
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_res))
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_reset))
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_syn))
+                pf.features_list.append(flag_to_int(pkt.tcp.flags_urg))
                 pf.features_list.append(int(pkt.tcp.window_size_value))  # TCP window size
                 pf.features_list = pf.features_list + [0, 0]  # UDP + ICMP positions
             elif protocol == socket.IPPROTO_UDP:
