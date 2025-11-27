@@ -13,7 +13,7 @@ bash Miniconda3-latest-Linux-x86_64.sh (on Linux operating systems)
 bash Miniconda3-latest-MacOSX-x86_64.sh (on macOS)
 ```
 
-Then create a new ```conda``` environment (called ```python39```) based on Python 3.13.5:
+Then create a new ```conda``` environment (called ```python313```) based on Python 3.13.5:
 
 ```
 conda create -n python313 python=3.13.5
