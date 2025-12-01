@@ -6,7 +6,7 @@ The objective of this study is to analyze how network traffic manipulation impac
 Both models are designed for binary classification of the network traffic as benign or malicious. Therefore, they return a value between 0 and 1, which is the probability of the input flow of being malicious. 
 
 
-| <img src="./mlp-cnn.png" width="100%">  |
+| <img src="./mlp-cnn.jpg" width="100%">  |
 |--|
 | Sample MLP and CNN architectures|
 
