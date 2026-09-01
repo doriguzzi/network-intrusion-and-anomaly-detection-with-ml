@@ -28,7 +28,7 @@ conda activate python313
 And configure the environment with ```tensorflow``` and a few more packages:
 
 ```
-(python39)$ pip install tensorflow==2.20
+(python39)$ pip install tensorflow==2.21
 (python39)$ pip install scikit-learn h5py pyshark matplotlib jupyter graphviz pandas scikeras pydot seaborn
 ```
 
@@ -46,7 +46,7 @@ sudo apt install tshark
 
 In macOS, just download ```Wireshark``` from [here](https://www.wireshark.org/download.html) and install it.
 
-Please note that the current parser code works with ```wireshark```/```tshark``` **version 4.4.9**.
+Please note that the current parser code works with ```wireshark```/```tshark``` **version 4.4.9** or newer.
 
 ## Executing the code
 For Jupyter-based laboratories, first start Jupyter from the terminal:

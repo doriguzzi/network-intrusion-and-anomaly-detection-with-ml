@@ -1,10 +1,10 @@
 # Training, testing and deploying an ML-based Network Intrusion Detection System
 
-In this laboratory, you will train and test a Convolutional Neural Network (CNN) on a dataset of benign and DDoS network traffic. After 100 epochs, the trained model is saved on the hard disk in [*keras* format](https://www.tensorflow.org/guide/keras/serialization_and_saving). The accuracy of the resulting model, as well as the duration of the training process, depends on a range of variables, such as the model's hyper-parameters, the model's layers (fully connected, convolutional), the optimizer (e.g., SGD or Adam) and on the number of training epochs.    
+In this demonstration, we will train and test a Convolutional Neural Network (CNN) on a dataset of benign and DDoS network traffic. After 100 epochs, the trained model is saved on the hard disk in [*keras* format](https://www.tensorflow.org/guide/keras/serialization_and_saving). The accuracy of the resulting model, as well as the duration of the training process, depends on a range of variables, such as the so-called model's hyper-parameters (e.g., the model's layers (fully connected, convolutional), the optimizer (e.g., SGD or Adam),  the number of training epochs, etc.).    
 
-Although all these parameters can be tuned with automated procedures, in this laboratory you will modify them manually to understand the impact of your changes on the training process and output.
+Although all these parameters can be tuned with automated procedures, in this demonstration we will modify them manually to understand the impact of your changes on the training process and output.
 
-Once the model is trained, you can test its performance on the test set o using pre-recorded network traffic.
+Once the model is trained, we will test its performance on the test set o using pre-recorded network traffic.
 
 This laboratory is based on the LUCID framework, whose code is available at https://github.com/doriguzzi/lucid-ddos and documented in the following research paper:
 
@@ -13,7 +13,7 @@ R. Doriguzzi-Corin, S. Millar, S. Scott-Hayward, J. Martínez-del-Rincón and D.
 ## Training and testing
 The training methods are implemented in the Jupyter notebook [training-binary.py](./training-binary.ipynb). After 100 epochs, the script produces a trained CNN in *keras* format saved in the ```output``` folder.
 
-The training process is performed by using the training and validation set available in the ```sample-dataset``` folder. Some relevant hyperparameters of the model (number of convolutional kernels and their height) and of the training process (batch size, learning rate and max epochs) can be changed to improve the performance of the CNN.
+The training process is performed by using the training and validation set available in the ```sample-dataset``` folder. Some relevant hyper-parameters of the model (number of convolutional kernels and their height) and of the training process (batch size, learning rate and max epochs) can be changed to improve the performance of the CNN.
 
 One trained, the model can be tested on the test set through the Jupyter notebook [classify.ipynp](./classify.ipynb)
 

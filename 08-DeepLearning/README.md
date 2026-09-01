@@ -1,3 +1,0 @@
-# Deep Learning models
-In these notebooks, we will highlight the difference between shallow and deep learning by comparing logistic regression and a small fully connected neural network on the [XOR problem](./XOR.ipynb). In addition, we will learn how to implement various [Feedforward Neural Networks](./FNNs.ipynb) for regression and classification problems.
-Finally, we will analyse the various steps of the [backward propagation algorithm](./BackwardProp.ipynb). 
