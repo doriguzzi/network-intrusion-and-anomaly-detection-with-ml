@@ -11,7 +11,7 @@ This laboratory is based on the LUCID framework, whose code is available at http
 R. Doriguzzi-Corin, S. Millar, S. Scott-Hayward, J. Martínez-del-Rincón and D. Siracusa, "Lucid: A Practical, Lightweight Deep Learning Solution for DDoS Attack Detection," in *IEEE Transactions on Network and Service Management*, vol. 17, no. 2, pp. 876-889, June 2020, doi: 10.1109/TNSM.2020.2971776.
 
 ## Training and testing
-The training methods are implemented in the Jupyter notebook [training-binary.py](./training-binary.ipynb). After 100 epochs, the script produces a trained CNN in *keras* format saved in the ```output``` folder.
+The training methods are implemented in the Jupyter notebook [training-binary.ipynb](./training-binary.ipynb). After 100 epochs, the script produces a trained CNN in *keras* format saved in the ```output``` folder.
 
 The training process is performed by using the training and validation set available in the ```sample-dataset``` folder. Some relevant hyper-parameters of the model (number of convolutional kernels and their height) and of the training process (batch size, learning rate and max epochs) can be changed to improve the performance of the CNN.
 
