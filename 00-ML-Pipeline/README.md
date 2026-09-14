@@ -23,7 +23,7 @@ Once trained, the CNN can perform inference on live network traffic or on pre-re
 Inference on a pre-recorded traffic trace can be started with command:
 
 ```
-python3 lucid_cnn.py --predict_live ./sample-dataset/CIC-DDoS-2019-UDPLag.pcap --model ./output/10t-10n-DOS2019-LUCID.keras --dataset_type DOS2019
+python lucid_cnn.py --predict_live ./sample-dataset/CIC-DDoS-2019-UDPLag.pcap --model ./output/10t-10n-DOS2019-LUCID.keras --dataset_type DOS2019
 ```
 
 The script parses the pcap file with the pre-recorded network traffic from the beginning to the end, printing the classification results every 10 seconds (default time window).
