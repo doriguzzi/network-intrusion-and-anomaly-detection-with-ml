@@ -57,11 +57,11 @@ PREDICT_HEADER = ['Model', 'Time', 'Packets', 'Samples', 'DDOS%', 'Accuracy', 'F
 PATIENCE = 10
 DEFAULT_EPOCHS = 1000
 hyperparamters = {
-    "learning_rate": [0.01],
+    "model__learning_rate": [0.01],
     "batch_size": [512],
-    "kernels": [64],
-    "regularization" : [None],
-    "dropout" : [None]
+    "model__kernels": [64],
+    "model__regularization" : [None],
+    "model__dropout" : [None]
 }
 
 def Conv2DModel(model_name,input_shape,kernel_col, kernels=64,kernel_rows=3,learning_rate=0.01,regularization=None,dropout=None):
@@ -85,7 +85,7 @@ def Conv2DModel(model_name,input_shape,kernel_col, kernels=64,kernel_rows=3,lear
 
 def compileModel(model,lr):
     # optimizer = SGD(learning_rate=lr, momentum=0.0, decay=0.0, nesterov=False)
-    optimizer = Adam(learning_rate=lr, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+    optimizer = Adam(learning_rate=lr, beta_1=0.9, beta_2=0.999, amsgrad=False)
     model.compile(loss='binary_crossentropy', optimizer=optimizer,metrics=['accuracy'])  # here we specify the loss function
 
 def main(argv):
@@ -157,7 +157,8 @@ def main(argv):
 
             model_name = dataset_name + "-LUCID"
             keras_classifier = KerasClassifier(build_fn=Conv2DModel,model_name=model_name, input_shape=X_train.shape[1:],kernel_col=X_train.shape[2])
-            rnd_search_cv = GridSearchCV(keras_classifier, hyperparamters, cv=args.cross_validation if args.cross_validation > 1 else [(slice(None), slice(None))], refit=True, return_train_score=True)
+            cv = args.cross_validation if args.cross_validation > 1 else [(np.arange(X_train.shape[0]), np.arange(X_train.shape[0]))]
+            rnd_search_cv = GridSearchCV(keras_classifier, hyperparamters, cv=cv, refit=True, return_train_score=True)
 
             es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=PATIENCE)
             best_model_filename = OUTPUT_FOLDER + str(time_window) + 't-' + str(max_flow_len) + 'n-' + model_name
@@ -166,8 +167,8 @@ def main(argv):
             rnd_search_cv.fit(X_train, Y_train, epochs=args.epochs, validation_data=(X_val, Y_val), callbacks=[es, mc])
 
             # With refit=True (default) GridSearchCV refits the model on the whole training set (no folds) with the best
-            # hyper-parameters and makes the resulting model available as rnd_search_cv.best_estimator_.model
-            best_model = rnd_search_cv.best_estimator_.model
+            # hyper-parameters and makes the resulting model available as rnd_search_cv.best_estimator_.model_
+            best_model = rnd_search_cv.best_estimator_.model_
 
             # We overwrite the checkpoint models with the one trained on the whole training set (not only k-1 folds)
             best_model.save(best_model_filename + '.keras')
