@@ -1,0 +1,4 @@
+# Binary classification: overfitting and early stopping
+In this experiment, our primary focus is on mitigating the issue of overfitting in the training data. In the initial phase, we closely monitor the training process of a compact neural network designed for a binary classification problem on a synthetic dataset. By observing the model's performance metrics, such as loss and accuracy, on the validation dataset, we aim to assess whether the model is exhibiting signs of overfitting the training data.
+
+Subsequently, we implement an early stopping technique to tackle the problem of overfitting. Early stopping is a preventive measure used during training to halt the process when the model's performance on the validation dataset ceases to improve. This approach helps us maintain a balance between learning from the training data and generalizing to unseen data, mitigating the risk of overfitting.
