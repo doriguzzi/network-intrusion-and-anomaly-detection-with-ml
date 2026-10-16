@@ -1,5 +1,5 @@
-# Clustering with K-means
-In this demonstration, we will test some the k-means algorithm with network traffic. Specifically, we will use such a clustering technique to group network flows into clusters in an unsupervised fashion.
+# Clustering with K-means and DBSCAN
+In this demonstration, we will test the k-means and DBSCAN algorithms with network traffic. Specifically, we will use such clustering techniques to group network flows into clusters in an unsupervised fashion.
 
 We will use a dataset of benign and various DDoS attacks from the CIC-DDoS2019 dataset (https://www.unb.ca/cic/datasets/ddos-2019.html).
 The network traffic has been previously pre-processed in a way that packets are grouped in bi-directional traffic flows using the 5-tuple (source IP, destination IP, source Port, destination Port, protocol). Each flow is represented with 21 packet-header features computed from max 1000 packets:
