@@ -1,0 +1,3 @@
+# Autoencoders
+In these notebooks, we will see how to exploit Autoencoders for dimensionality reduction, unsupervised pretraining and for network anomaly detection. In the [first notebook](./DimensionalityReduction.ipynb), we will show how to use a Linear Autoencoder to visualise the network flow samples in 1, 2 and 3 dimensional spaces. The [second](./PretrainedAutoencoder.ipynb) illustrates the utilization of Autoencoders to address the challenge of insufficient labeled samples.
+Finally, in the [laboratory](./Autoencoder-lab.ipynb), you will implement and tune a Stacked Autoencoder for network anomaly detection.
