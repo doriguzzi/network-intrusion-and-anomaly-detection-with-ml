@@ -5,12 +5,12 @@ This laboratory encompasses the entire life-cycle of a NIDS. It spans from the A
 1. Implement an MLP model from scratch
 2. Define the ranges of hyperparameters and execute training
 3. Execute hyperparameter tuning
-4. Test the trained model on the test set and on one or more pcap files using the notebook
+4. Test the trained model on the test set and on network traffic using the notebook
 
 ## NIDS deployment
 1. Export the notebook to a stand-alone Python script.
 2. Execute the script using the arguments ```--model``` and ```--predict``` to indicate the paths to the trained model and to the folder with the test set respectively. 
-3. Execute the script using the arguments ```--model``` and ```--predict_live``` to indicate the paths to the trained model and to a ```pcap``` file respectively.
+3. Execute the script using the arguments ```--model``` and ```--predict_live``` to indicate the paths to the trained model and to a ```pcap``` file (or to a network interface) respectively.
 
 
 ## Technical details
@@ -22,7 +22,7 @@ In this lab, you need three terminals, one for running the jupyter server, one f
     - ```cd network-intrusion-and-anomaly-detection-with-ml/14-SystemDeployment```
     - ```jupyter nbconvert --to python NIDS-lab.ipynb```
     - Example: ```python NIDS-lab.py --train ./DOS2019_Binary_5_Attacks_MLP --model nids_model.keras```
-    - Example: ```python NIDS-lab.py --predict_live DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk.pcap --model nids_model.keras```
+    - Example: ```python NIDS-lab.py --predict_live DOS2019_Binary_5_Attacks_PCAPs/dns-ddos.pcap --model nids_model.keras```
     - Example: ```python NIDS-lab.py --predict_live lo```, where ```lo``` is the loopback interface
 - **Terminal 3:**
     - ```cd network-intrusion-and-anomaly-detection-with-ml/14-SystemDeployment```
