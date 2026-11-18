@@ -19,7 +19,13 @@ In this lab, you need three terminals, one for running the jupyter server, one f
 - **Terminal 1:**
     - ```jupyter notebook```
 - **Terminal 2:**
-    - ```cd network-intrusion-and-anomaly-detection-with-ml/12-SystemDeployment```
+    - ```cd network-intrusion-and-anomaly-detection-with-ml/14-SystemDeployment```
     - ```jupyter nbconvert --to python NIDS-lab.ipynb```
     - Example: ```python NIDS-lab.py --train ./DOS2019_Binary_5_Attacks_MLP --model nids_model.keras```
     - Example: ```python NIDS-lab.py --predict_live DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk.pcap --model nids_model.keras```
+    - Example: ```python NIDS-lab.py --predict_live lo```, where ```lo``` is the loopback interface
+- **Terminal 3:**
+    - ```cd network-intrusion-and-anomaly-detection-with-ml/14-SystemDeployment```
+    - ```tcpreplay-edit -i lo DOS2019_Binary_5_Attacks_PCAPs/dns-ddos.pcap```
+    
+    
