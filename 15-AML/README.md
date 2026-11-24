@@ -16,19 +16,19 @@ The laboratory is divided into two phases:
     - train a pre-defined MLP model and test it using the test set and an unperturbed traffic trace [ddos-chunk-short.pcap](./DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk-short.pcap)
     - ensure that the model achieves a high accuracy on the test set and that it correctly classifies the unperturbed attack traffic trace as malicious
     - if not, you can modify the model architecture and/or hyperparameters to improve the accuracy of the model on the test set and the unperturbed attack traffic trace
--  **Phase 2**: Live AML attack
-    - attack the MLP-based NIDS in real-time using the [aml-attack.py](./aml-attack.py) script, which replays the packets of a PCAP file on a network interface, adding one or more perturabations to the packets among the following:
+    - change the ```train``` and ```predict``` functions in the notebook to make them accept the dataset path and model path as arguments
+    - convert the notebook into a Python script using the command ```jupyter nbconvert --to script NIDS_AML.ipynb```
+-  **Phase 2**: Live AML attack  
+    - run the NIDS in a separate terminal using the command ```python NIDS_AML.py --predict_live ./DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk-short.pcap --model ./MLP_model.keras```. This verifies that the model correctly classifies the unperturbed attack traffic trace as malicious.
+    - perturb the original traffic using the [aml-attack.py](./aml-attack.py) script, which adds one or more perturabations to the packets among the following:
         - Random TCP Window size (--min-tcp-window --max-tcp-window) using values between 0 and 65535
         - Random IAT perturbation (--min-delay-ms --max-delay-ms) using values between 1 and 1000 milliseconds
         - Random packet length change (--min-length-change --max-length-change) using values between 0 and 1500 bytes
         - Random TTL change (--min-ttl --max-ttl) using values between 0 and 255
         - IP fragmentation flags (--perturb-ip-flags)
-    - example command to run the attack:
-    ```python aml-attack.py DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk-short.pcap -i lo0  --perturb-ip-flags```
-    - if replying the traffic through the loopback interface with the command above does not work, you can try saving the perturbed traffic to a new PCAP file and then simulating the AML attack within the notebook. 
-      - First run the command below to generate a new PCAP file with the perturbed traffic:
-    ```python aml-attack.py DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk-short.pcap -output-pcap ddos-chunk-short-aml.pcap --perturb-ip-flags```
-      - Then run the predict_live function in the notebook in the last cell of the notebook.
+    - Example command to perturb the IP flags::
+    ```python aml-attack.py DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk-short.pcap -o  DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk-short-aml.pcap --perturb-ip-flags```
+    - Finally run the NIDS in a separate terminal using the command ```python NIDS_AML.py --predict_live ./DOS2019_Binary_5_Attacks_PCAPs/ddos-chunk-short-aml.pcap --model ./MLP_model.keras```. This verifies that the model misclassifies the perturbed attack traffic trace as benign.
 
 ## Dataset
 You will use a dataset of benign and various DDoS attacks from the CIC-DDoS2019 dataset (https://www.unb.ca/cic/datasets/ddos-2019.html).
